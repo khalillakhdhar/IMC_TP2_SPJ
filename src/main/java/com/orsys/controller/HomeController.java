@@ -40,7 +40,7 @@ public class HomeController {
 		m.addAttribute("imc",valeur);
 		m.addAttribute("resultat",res);
 		}
-		catch(Exception ex)
+		catch(NumberFormatException ex)
 		{
 			
 			String res="les valeur de poids et taille doivent être numérique!";
