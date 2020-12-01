@@ -28,13 +28,26 @@ public class HomeController {
 	{
 		String v1=req.getParameter("poid");
 		String v2=req.getParameter("taille");
-		double vpoid=Double.parseDouble(v1);
-		double vtaille=Double.parseDouble(v2);
+		double vpoid=0;
+		double vtaille=0;
+		try
+		{
+		 vpoid=Double.parseDouble(v1);
+		 vtaille=Double.parseDouble(v2);
 		Indice i=new Indice(vpoid, vtaille);
 		String res=i.result();
 		int valeur=i.calculer();
 		m.addAttribute("imc",valeur);
 		m.addAttribute("resultat",res);
+		}
+		catch(Exception ex)
+		{
+			
+			String res="les valeur de poids et taille doivent être numérique!";
+			m.addAttribute("resultat",res);
+m.addAttribute("imc","");
+		}
+	
 		return "home";
 		
 		
