@@ -8,8 +8,8 @@
 </head>
 <body>
   <form method="post" action="imc">
-      poid<input type="text" required min="10" name="v1">
-      taille<input type="text" required min="1" name="v2">
+      poid<input type="text" required min="10" name="poid">
+      taille<input type="text" required min="1" name="taille">
       <input value="calculer IMC" type="submit">
       </form>
 </body>
