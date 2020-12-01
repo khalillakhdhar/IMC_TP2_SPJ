@@ -35,6 +35,12 @@ double a=this.poid/Math.pow(this.taille,2);
 }
 public String result()
 {
+	if(calculer()<20)
+		return "vous êtes maigre!";
+	else if(calculer()<=25)
+		return "vous êtes idéale";
+	else
+		return "vous êtes en surpoids";
 	
 
 }

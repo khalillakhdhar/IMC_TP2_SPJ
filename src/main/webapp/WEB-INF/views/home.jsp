@@ -12,5 +12,6 @@
       taille<input type="text" required min="1" name="taille">
       <input value="calculer IMC" type="submit">
       </form>
+      ${imc }<br>${resultat}
 </body>
 </html>

@@ -11,12 +11,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.orsys.model.Indice;
+
 
 @Controller
 public class HomeController {
 
 	@RequestMapping(value="/")
-	public ModelAndView test(HttpServletResponse response) throws IOException{
+	public ModelAndView test(HttpServletResponse response,Model m) throws IOException{
+		m.addAttribute("imc","");
+		m.addAttribute("resultat","");
 		return new ModelAndView("home");
 	}
 	@RequestMapping(value="/imc" , method=RequestMethod.POST)
@@ -24,9 +28,13 @@ public class HomeController {
 	{
 		String v1=req.getParameter("poid");
 		String v2=req.getParameter("taille");
-		int valeur1=Integer.parseInt(v1);
-		int valeur2=Integer.parseInt(v2);
-		m.addAttribute("imc",v1);
+		double vpoid=Double.parseDouble(v1);
+		double vtaille=Double.parseDouble(v2);
+		Indice i=new Indice(vpoid, vtaille);
+		String res=i.result();
+		int valeur=i.calculer();
+		m.addAttribute("imc",valeur);
+		m.addAttribute("resultat",res);
 		return "home";
 		
 		
